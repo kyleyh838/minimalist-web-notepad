@@ -4,6 +4,31 @@ This is an open source clone of notepad.cc, which is now defunct.
 
 See demo at https://notes.orga.cat or https://notes.orga.cat/whatever.
 
+我用的是宝塔面板，首先安装 nginx 和 php （我用的 nginx 1.21+php 7.4）
+
+1.打开
+https://github.com/pereorga/minimalist-web-notepad
+点击绿色的“Code”，点击“Download ZIP”下载，得到文件“minimalist-web-notepad-master.zip”
+
+2.在宝塔新建一个网站，在“网站配置”中加入以下字段并保存（作用是启用 URL 重写）
+location / {
+    rewrite ^/([a-zA-Z0-9_-]+)$ /index.php?note=$1;
+}
+
+3.上传“minimalist-web-notepad-master.zip”并解压到网站根目录
+
+4.编辑解压出来的“index.php”文件，修改第四行中的网址为自己的网址
+
+5.结束。其实上述内容基本都写在了项目页面...
+
+------------------------------------
+这个记事本，感觉挺好用的，在域名后面加上随机字符就可以“生成一个新的记事本”。
+例如域名是1.com
+输入 1.com/123 是一个记事本
+输入 1.com/fsdfa 也是一个记事本
+
+我个人使用这个的场景在于存到快捷书签栏，需要记录的时候点一下打开然后记录进去，其他设备输入域名+相同的后缀就能看到记录的内容。
+
 ## Installation
 
 At the top of `index.php` file, change `$base_url` variable to point to your
